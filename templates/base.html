@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+  </head>
+  <body>
+
+
+    {% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+{#    <div>#}
+{#      <strong>Menu:</strong>#}
+{#      <ul>#}
+{#        {% if user.is_authenticated %}#}
+{#        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>#}
+{#        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>#}
+{#        {% else %}#}
+{#        <li><a href="{% url 'account_login' %}">Sign In</a></li>#}
+{#        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>#}
+{#        {% endif %}#}
+{#      </ul>#}
+{#    </div>#}
+
+    {% block extra_body %}
+    {% endblock %}
+  </body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Graduation Work</title>
+  <link rel="stylesheet" href="./static/bootstrap.min.css">
+  <link rel="stylesheet" href="./static/main.css">
+</head>
+<body class="" data-gr-c-s-loaded="true">
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href={% url 'base' %}>Просто магазин</a>
+  <img src="./static/logo.svg" alt="" width="42" height="42">
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+          aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href={% url 'base' %}>
+          Главная</a>
+      </li>
+        <ul>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
+        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+        {% else %}
+        <li><a href="{% url 'account_login' %}">Sign In</a></li>
+        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+        {% endif %}
+      </ul>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Гаджеты</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+
+          <a class="dropdown-item" href="./smartphones.html">
+            Сматрфоны</a>
+
+        </div>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="./empty_section.html">
+          Аксесcуары</a>
+      </li>
+
+
+    </ul>
+    <a class="btn btn-outline-success my-2 my-sm-0" role="button"
+       href="./cart.html">
+      Корзина</a>
+
+
+
+
+  </div>
+</nav>
+
+
+<main role="main">
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4">Добро пожаловать на сайт просто магазина</h1>
+      <p>Лучшие мобилы только у нас:</p>
+    </div>
+  </div>
+        {% block content %}
+            <h1>1</h1>
+            {% for article in articles %}
+                <h1><aр href="{% url 'base' %}">{{ article.title }}</aр></h1>
+                  <button class="btn btn-danger">Добавить в корзину</button>
+            {% endfor %}
+            <h1>1</h1>
+        {% endblock %}
+
+
+
+  <div class="container mb-5">
+    <!-- Example row of columns -->
+    <div class="row">
+
+{#      <div class="col-md-4">#}
+{#        <h2>Nexus 5x</h2>#}
+{##}
+{#        <a href="./phone.html">#}
+{##}
+{#          <img src="./static/nexus5x.webp" width="180">#}
+{##}
+{#        </a>#}
+{##}
+{#        <form>#}
+{#          <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">#}
+{#        </form>#}
+{#      </div>#}
+{##}
+{#      <div class="col-md-4">#}
+{#        <h2>iPhone 7</h2>#}
+{##}
+{#        <a href="./phone.html">#}
+{##}
+{#          <img src="./static/iphone7.webp" width="180">#}
+{##}
+{#        </a>#}
+{##}
+{#        <form>#}
+{#          <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">#}
+{#        </form>#}
+{#      </div>#}
+{##}
+{#      <div class="col-md-4">#}
+{#        <h2>Pixel 2</h2>#}
+{##}
+{#        <a href="./phone.html">#}
+{##}
+{#          <img src="./static/pixel2.webp" width="180">#}
+{##}
+{#        </a>#}
+{##}
+{#        <form>#}
+{#          <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">#}
+{#        </form>#}
+{#      </div>#}
+{##}
+{#    </div>#}
+{#  </div> <!-- /container -->#}
+{##}
+{#  <div class="jumbotron">#}
+{#    <div class="container">#}
+{#      <h1 class="display-4">Не знаете что одеть летом?</h1>#}
+{#      <p>Вот что мы можем предложить:</p>#}
+{#    </div>#}
+{#  </div>#}
+{##}
+{##}
+{#  <div class="container mb-5">#}
+{#    <!-- Example row of columns -->#}
+{#    <div class="row">#}
+{##}
+{#      <div class="col-md-4">#}
+{#        <h2>Фуфайка</h2>#}
+{##}
+{#        <a href="./phone.html">#}
+{##}
+{#          <img src="./static/fufajka.jpg" width="180">#}
+{##}
+{#        </a>#}
+{##}
+{#        <form>#}
+{#          <input type="submit" class="btn btn-secondary" value="Добавить в корзину »">#}
+{#        </form>#}
+{#      </div>#}
+{##}
+{#    </div>#}
+{#  </div> <!-- /container -->#}
+{##}
+{#</main>#}
+
+<hr>
+<footer class="container">
+  <p>© Просто магазин 2018</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
